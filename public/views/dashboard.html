@@ -9,6 +9,30 @@
     <title>Dashboard</title>
 </head>
 <body>
-    <h1>Dashboard</h1>
+    <nav>
+        <p>logo</p>
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <aside>
+            <p>Tool 1</p>
+        </aside>
+        <main>
+            <h1>Dashboard</h1>
+            <ul>
+                <?php foreach($cards as $key=>$value): ?>
+                    <li>
+                        <?php echo $value['title']; ?>
+                        <img src="<?= $value['imageUrlPath']; ?>">
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        </main>
+    </div>
 </body>
 </html>
