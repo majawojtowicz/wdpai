@@ -15,7 +15,10 @@ class SecurityController extends AppController {
         $password = $_POST["password"]??'';
 
         // TODO zwroc HTML logowania, przetworz dane
-        return $this->render("dashboard", ["cards" => []]);
+        //return $this->render("dashboard", ["cards" => []]);
+
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/dashboard");
     }
 
     public function register(){
