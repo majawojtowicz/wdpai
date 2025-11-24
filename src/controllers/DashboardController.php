@@ -1,3 +1,6 @@
+
+public function index(?int $id){
+
 $cards = [
     [
         'id' => 1,
@@ -35,3 +38,27 @@ $cards = [
         'href' => '/cards/ten-of-hearts'
     ],
 ];
+
+if($id !== null){
+    foreach($cards as $card){
+        if($card['id'] === $id){
+            return $this->render("cardDetails", [
+                'card' => $card
+            ]);
+        }
+    }
+    //404
+    http_response_code(404);
+    return;
+}
+
+$userRepository = new UserRepository();
+$users = $userRepository->getUsers();
+
+var_dump($users);
+
+return $this->render("dashboard", [
+    'cards' => $cards,
+    'users' => $users
+]);
+}
