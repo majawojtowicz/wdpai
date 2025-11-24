@@ -12,5 +12,14 @@ class UserRepository extends Repository{
         return $users;
     }
 
+    public function addUser(string $username, string $password): void
+    {
+        $query = $this->database->connect()->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
+        $query->execute([
+            'username' => $username,
+            'password' => password_hash($password, PASSWORD_BCRYPT)
+        ]);
+    }
+
     
 }
