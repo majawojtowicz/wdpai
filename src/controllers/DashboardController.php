@@ -1,4 +1,17 @@
 
+<?php
+
+require_once "AppController.php";
+require_once __DIR__.'/../repository/UserRepository.php';
+
+class DashboardController extends AppController {
+
+private $cardsRepository;
+public function __construct()
+{
+    $this->cardsRepository = new CardsRepository();
+}
+
 public function index(?int $id){
 
 $cards = [
@@ -61,4 +74,11 @@ return $this->render("dashboard", [
     'cards' => $cards,
     'users' => $users
 ]);
+}
+public function search(){
+    header('Content-Type: application/json');
+    http_response_code(200);
+    $cards=$this->cardsRepository->getCardsByTitle( 'heart');
+    echo json_encode($cards);
+}
 }

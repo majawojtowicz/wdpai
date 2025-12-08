@@ -12,7 +12,15 @@ class Routing {
          "register" => [
             "controller" => "SecurityController",
             "action" => "register"
-        ]
+         ],
+         "dashboard" => [
+            "controller" => "DashboardController",
+            "action" => "dashboard"
+         ],
+            "search-cards" => [
+                "controller" => "DashboardController",
+                "action" => "search"
+            ]
     ];
 
     public static function run(string $path) {
